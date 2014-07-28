@@ -34,10 +34,8 @@ Add the license information to your maven profile (settings.xml)
 
 3. Add the following argument to your Server VM Arguments:
 
-´´´
 	-Dworkspace.dir=${workspace_loc}
 	-Dcom.gentics.portalnode.confpath=${workspace_loc}/demoportal/demoportal-config/target/demoportal_configuration
 	-Dcatalina.config=file://${workspace_loc}/demoportal/demoportal-config/src/main/eclipse-conf/catalina.properties
-´´´
 
 4. Make sure you invoked 'Publish' for your Server in order to update the used Server settings.
