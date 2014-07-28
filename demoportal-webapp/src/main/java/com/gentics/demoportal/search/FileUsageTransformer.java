@@ -44,7 +44,7 @@ public class FileUsageTransformer extends ContentTransformer implements
 
 	/**
 	 * Creates instance of FileUsageTransformer
-	 * 
+	 *
 	 * @param config
 	 */
 	public FileUsageTransformer(GenericConfiguration config) {

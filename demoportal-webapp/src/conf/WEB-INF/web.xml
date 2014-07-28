@@ -31,23 +31,19 @@
 		<url-pattern>/GCN/*</url-pattern>
 	</servlet-mapping>
 
-	<!-- SEARCH-INDEXER SERVLET -->
+	<!--
 	<servlet>
 		<description>Gentics .Node REST API for a Content Content Repository</description>
 		<display-name>indexer</display-name>
 		<servlet-name>indexer</servlet-name>
 		<servlet-class>com.gentics.cr.lucene.IndexJobServlet</servlet-class>
-		<!-- It is important that the indexer servlet is initialized on startup 
-			(before the first search request is sent). Otherwise initializing the indexes 
-			might fail. -->
 		<load-on-startup>5</load-on-startup>
-
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>indexer</servlet-name>
 		<url-pattern>/indexer/*</url-pattern>
 	</servlet-mapping>
-	<!-- END SEARCH-INDEXER SERVLET -->
+	-->
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
