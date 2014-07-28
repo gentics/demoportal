@@ -26,13 +26,18 @@ Add the license information to your maven profile (settings.xml)
 
 1. Import all projects and invoke project clean
 
-2. Create a new Tomcat 7 server instance
-* Add the webapps during server creation
-* Set the runtime server configuration path to: `/demoportal-config/target/eclipse_configuration'
-  Please close and reopen the server configuration window before continuing.
-* Add the following argument to your Server VM Arguments:
+2. Create a new Apache Tomcat 7 server instance and add the following webapps:
+
+* demoportal-webapp
+* demoportal-portalnode-webapp
+* demoportal-genticsimagestore-webapp
+
+3. Add the following argument to your Server VM Arguments:
+
 <code>
+	-Dworkspace.dir=${workspace_loc}
 	-Dcom.gentics.portalnode.confpath=${workspace_loc}/demoportal/demoportal-config/target/demoportal_configuration
+	-Dcatalina.config=file://${workspace_loc}/demoportal/demoportal-config/src/main/eclipse-conf/catalina.properties
 <code>
 
-3. Make sure you invoked 'Publish' for your Server in order to update the used Server settings.
+4. Make sure you invoked 'Publish' for your Server in order to update the used Server settings.

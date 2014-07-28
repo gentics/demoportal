@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>demoportal-config</artifactId>
-	<!-- Unfortunately the project must be of type jar. Otherwise m2e will not 
+	<!-- Unfortunately the project must be of type jar. Otherwise m2e will not
 		invoke any configured goals -->
 	<packaging>jar</packaging>
 
@@ -196,26 +196,6 @@
 									<includes>
 										<include>index/**</include>
 									</includes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>filter-eclipse-conf</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/eclipse_configuration</outputDirectory>
-							<overwrite>false</overwrite>
-							<resources>
-								<resource>
-									<directory>src/main/eclipse-conf</directory>
-									<filtering>true</filtering>
-									<excludes>
-										<exclude>**/*.jar</exclude>
-									</excludes>
 								</resource>
 							</resources>
 						</configuration>
