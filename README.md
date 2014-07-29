@@ -27,9 +27,9 @@
 
 * Create a new Apache Tomcat 7 server instance and add the following webapps:
 
-** demoportal-webapp
-** demoportal-portalnode-webapp
-** demoportal-genticsimagestore-webapp
+  * demoportal-webapp
+  * demoportal-portalnode-webapp
+  * demoportal-genticsimagestore-webapp
 
 * Add the following argument to your Server VM Arguments:
 
