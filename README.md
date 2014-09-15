@@ -23,6 +23,22 @@
     </activeProfiles>
 ```
 
+## Database Setup ##
+
+The following two databases are needed in order to provide demo content for the Demo Portal.
+
+```
+# CCR
+echo "CREATE DATABASE contentrepository" | mysql -u root -p
+mysql -u root -p contentrepository < demoportal/demoportal-config/src/main/sql/contentrepository.sql
+
+# PCR
+echo "CREATE DATABASE contentrepository_portal" | mysql -u root -p
+mysql -u root -p contentrepository_portal < demoportal/demoportal-config/src/main/sql/contentrepository_portal.sql
+```
+
+## Import in Eclipse ##
+
 * Import all projects and invoke project clean
 
 * Create a new Apache Tomcat 7 server instance and add the following webapps:
