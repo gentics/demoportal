@@ -12,13 +12,26 @@
         <profile>
             <id>gentics.license</id>
             <properties>
-                    <gentics.gpn.licensekey>YOUR_LICENSE_KEY</gentics.gpn.licensekey>
+				<gentics.gpn.licensekey>YOUR_LICENSE_KEY</gentics.gpn.licensekey>
             </properties>
         </profile>
+        <profile>
+            <id>gentics.demoportal</id>
+            <properties>
+				<portal.ds.content.url>jdbc:mysql://localhost:3306/contentrepository</portal.ds.content.url>
+				<portal.ds.content.username>root</portal.ds.content.username>
+				<portal.ds.content.passwd>finger</portal.ds.content.passwd>
+				<portal.ds.portal.url>jdbc:mysql://localhost:3306/contentrepository_portal</portal.ds.portal.url>
+				<portal.ds.portal.username>root</portal.ds.portal.username>
+				<portal.ds.portal.passwd>finger</portal.ds.portal.passwd>
+				...
+	        </properties>
+		</profile>
         ...
     </profiles>
     <activeProfiles>
         <activeProfile>SDK</activeProfile>
+        <activeProfile>gentics.demoportal</activeProfile>
         <activeProfile>gentics.license</activeProfile>
     </activeProfiles>
 ```
@@ -36,6 +49,8 @@ mysql -u root -p contentrepository < demoportal/demoportal-config/src/main/sql/c
 echo "CREATE DATABASE contentrepository_portal" | mysql -u root -p
 mysql -u root -p contentrepository_portal < demoportal/demoportal-config/src/main/sql/contentrepository_portal.sql
 ```
+
+By default the demoportal tries to access your local mysql server on port 3306 with the login: root/finger. You can modify your credentials by updating your __gentics.demoportal__ maven profile.
 
 ## Import in Eclipse ##
 
