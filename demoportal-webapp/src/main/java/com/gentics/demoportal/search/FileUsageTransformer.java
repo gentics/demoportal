@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.util.Version;
 
@@ -96,8 +96,8 @@ public class FileUsageTransformer extends ContentTransformer implements
 					logger.debug("query to get files to delete: " + docQuery);
 					try {
 						StandardAnalyzer analyzer = new StandardAnalyzer(
-								Version.LUCENE_CURRENT);
-						Query q = new QueryParser(Version.LUCENE_CURRENT,
+								Version.LUCENE_4_9);
+						Query q = new QueryParser(Version.LUCENE_4_9,
 								"contentid", analyzer).parse(docQuery);
 						writer.deleteDocuments(q);
 					} catch (CorruptIndexException cie) {

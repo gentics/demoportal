@@ -21,9 +21,9 @@
 		<maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
 
 		<!-- Dependency versions -->
-		<portalnode.version>4.6.0</portalnode.version>
-		<contentconnector.version>1.13.3</contentconnector.version>
-		<node.version>2.0.4</node.version>
+		<portalnode.version>4.7.0</portalnode.version>
+		<contentconnector.version>2.0.1</contentconnector.version>
+		<node.version>2.0.13</node.version>
 
 		<!-- Default values -->
 		<portalnode.product.key>PN</portalnode.product.key>
