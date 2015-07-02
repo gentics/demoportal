@@ -26,6 +26,7 @@
 			<groupId>com.gentics</groupId>
 			<version>${portalnode.version}</version>
 			<artifactId>portalnode-webapp</artifactId>
+			<classifier>PNSDK</classifier>
 			<type>war</type>
 		</dependency>
 	</dependencies>
