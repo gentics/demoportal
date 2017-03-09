@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>demoportal-config</artifactId>
-	<!-- Unfortunately the project must be of type jar. Otherwise m2e will not
+	<!-- Unfortunately the project must be of type jar. Otherwise m2e will not 
 		invoke any configured goals -->
 	<packaging>jar</packaging>
 
@@ -36,11 +36,15 @@
 	</repositories>
 
 	<build>
-		<!-- The inherited portalnode-config profile will automatically be activated
+		<filters>
+			<filter>${filter.properties.file}</filter>
+		</filters>y
+		<!-- The inherited portalnode-config profile will automatically be activated 
 			and take care for building the configuration files -->
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>

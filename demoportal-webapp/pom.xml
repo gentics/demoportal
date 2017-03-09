@@ -124,6 +124,14 @@
 			<version>2.0.public_draft</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.gentics</groupId>
+			<version>${portalnode.version}</version>
+			<artifactId>portalnode-webapp</artifactId>
+			<classifier>${portalnode.webapp.type}</classifier>
+			<type>war</type>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -142,8 +150,14 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<dependentWarIncludes></dependentWarIncludes>
-					<dependentWarExcludes>**</dependentWarExcludes>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<overlays>
+						<overlay>
+							<groupId>com.gentics</groupId>
+							<artifactId>portalnode-webapp</artifactId>
+							<classifier>${portalnode.webapp.type}</classifier>
+						</overlay>
+					</overlays>
 				</configuration>
 			</plugin>
 
@@ -167,10 +181,6 @@
 									<type>jar</type>
 									<outputDirectory>${project.build.directory}/sharedlibs-extra/</outputDirectory>
 								</artifactItem>
-								<!-- <artifactItem> <groupId>com.gentics</groupId> <artifactId>cas-gentics-filter</artifactId>
-									<version>1.0.0-SNAPSHOT</version> <overWrite>true</overWrite> <type>jar</type>
-									<outputDirectory>${project.build.directory}/sharedlibs-extra/</outputDirectory>
-									</artifactItem> -->
 							</artifactItems>
 						</configuration>
 					</execution>

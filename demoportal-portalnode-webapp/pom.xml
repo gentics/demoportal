@@ -20,15 +20,33 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>com.gentics</groupId>
 			<version>${portalnode.version}</version>
 			<artifactId>portalnode-webapp</artifactId>
-			<classifier>PNSDK</classifier>
+			<classifier>${portalnode.webapp.type}</classifier>
 			<type>war</type>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<overlays>
+						<overlay>
+							<groupId>com.gentics</groupId>
+							<artifactId>portalnode-webapp</artifactId>
+							<classifier>${portalnode.webapp.type}</classifier>
+						</overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

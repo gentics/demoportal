@@ -16,18 +16,19 @@
 	</parent>
 
 	<properties>
+		<maven.war.plugin.version>2.6</maven.war.plugin.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
 
 		<!-- Dependency versions -->
-		<portalnode.version>4.7.0</portalnode.version>
+		<portalnode.version>4.8.1</portalnode.version>
 		<contentconnector.version>2.0.1</contentconnector.version>
-		<node.version>2.0.13</node.version>
+		<node.version>2.0.44</node.version>
 
 		<!-- Default values -->
-		<portalnode.product.key>PN</portalnode.product.key>
-		<!-- Don't add a trailing slash. Otherwise it will break the generated
+
+		<!-- Don't add a trailing slash. Otherwise it will break the generated 
 			rest urls -->
 		<portal.portletapp_prefix>/CNPortletapp</portal.portletapp_prefix>
 		<portal.template_id>1</portal.template_id>
@@ -36,45 +37,48 @@
 		<portal.backendpath>.Node</portal.backendpath>
 		<portal.navrootfolder_id>10002.1</portal.navrootfolder_id>
 		<portal.homepage_id>10007.1</portal.homepage_id>
-
-		<portal.ds.content.url>jdbc:mysql://localhost:3306/contentrepository</portal.ds.content.url>
-		<portal.ds.content.username>root</portal.ds.content.username>
-		<portal.ds.content.passwd>finger</portal.ds.content.passwd>
-		<portal.ds.portal.url>jdbc:mysql://localhost:3306/contentrepository_portal</portal.ds.portal.url>
-		<portal.ds.portal.username>root</portal.ds.portal.username>
-		<portal.ds.portal.passwd>finger</portal.ds.portal.passwd>
 		<portal.ds.cache>true</portal.ds.cache>
-
 		<portal.gcnauthurl>http://cms.yourcms.tdl/.Node/</portal.gcnauthurl>
 		<gentics.gpn.licensekey>0000-0000-0000-0000-0000-0000</gentics.gpn.licensekey>
 
 		<portal.anonymous.group>3</portal.anonymous.group>
 		<portal.modificationCheckInterval>5</portal.modificationCheckInterval>
-
 	</properties>
 
-	<!-- Please note that credentials should be placed -->
 	<profiles>
 		<profile>
-			<id>example</id>
+			<!-- Activate this profile if the eclipse specific .project file can be 
+				found -->
+			<activation>
+				<file>
+					<exists>.project</exists>
+				</file>
+			</activation>
+			<id>local</id>
 			<properties>
-				<portal.gcnbackendurl>http://demo-cms.gentics.com/</portal.gcnbackendurl>
-				<portal.gcnauthurl>http://demo-cms.gentics.com/.Node/</portal.gcnauthurl>
-				<portal.ds.content.url>jdbc:mysql://somewhere:3306/contentrepository</portal.ds.content.url>
-				<portal.ds.content.username>username</portal.ds.content.username>
-				<portal.ds.content.passwd>1234</portal.ds.content.passwd>
-				<portal.ds.portal.url>jdbc:mysql://somewhere:3306/contentrepository_portal</portal.ds.portal.url>
-				<portal.ds.portal.username>username</portal.ds.portal.username>
-				<portal.ds.portal.passwd>1234</portal.ds.portal.passwd>
-				<gentics.gpn.licensekey>1111-2222-3333-4444-5555-6666</gentics.gpn.licensekey>
+				<portalnode.webapp.type>PNSDK</portalnode.webapp.type>
+				<filter.properties.file>config.local.properties</filter.properties.file>
 			</properties>
 		</profile>
 		<profile>
-			<id>SDK</id>
+			<id>dev</id>
 			<properties>
-				<portal.modificationCheckInterval>5</portal.modificationCheckInterval>
-				<!-- Other settings -->
-				<portalnode.product.key>PNSDK</portalnode.product.key>
+				<portalnode.webapp.type>PN</portalnode.webapp.type>
+				<filter.properties.file>config.dev.properties</filter.properties.file>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<portalnode.webapp.type>PN</portalnode.webapp.type>
+				<filter.properties.file>config.test.properties</filter.properties.file>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<portalnode.webapp.type>PN</portalnode.webapp.type>
+				<filter.properties.file>config.prod.properties</filter.properties.file>
 			</properties>
 		</profile>
 	</profiles>
@@ -87,6 +91,7 @@
 		<module>demoportal-config</module>
 		<module>demoportal-package</module>
 	</modules>
+
 
 	<dependencyManagement>
 		<dependencies>
@@ -190,6 +195,35 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.6.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven.war.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.10</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
 	<repositories>
 		<repository>
 			<id>maven.gentics.com</id>
@@ -213,4 +247,5 @@
 			</snapshots>
 		</repository>
 	</repositories>
+
 </project>
