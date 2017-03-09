@@ -1,4 +1,4 @@
-# Gentics Demoportal #
+# Gentics Portal.Node Java Demoportal #
 
 ## Install Eclipse JEE (Including egit, m2e, m2e-wtp) ##
 
@@ -77,8 +77,10 @@ The settings in those files are not used to configure maven.
 
 ## Building 
 
-You may build the whole distribution package via maven:
+You may build the whole distribution package which includes all settings and a Apache Tomcat server via maven:
 
 ```
 mvn -Pprod,\!local clean package
 ```
+
+You can now use this package file to build your own docker image or deploy it straight to your server.
