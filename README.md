@@ -2,6 +2,8 @@
 
 ## Install Eclipse Indigo JEE (Including egit, m2e, m2e-wtp) ##
 
+[Portal.Node Maven IDE Guide](http://www.gentics.com/Portal.Node/guides/maven_ide.html)
+
 ## Preparation ##
 
 * Add the license information to your maven profile (settings.xml)
