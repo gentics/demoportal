@@ -10,14 +10,14 @@
 
 ```xml
     <profiles>
-        ...
+        …
         <profile>
             <id>gentics.license</id>
             <properties>
-				<gentics.gpn.licensekey>YOUR_LICENSE_KEY</gentics.gpn.licensekey>
+                <gentics.gpn.licensekey>YOUR_LICENSE_KEY</gentics.gpn.licensekey>
             </properties>
         </profile>
-        ...
+        …
     </profiles>
     <activeProfiles>
         <activeProfile>gentics.license</activeProfile>
@@ -50,7 +50,7 @@ By default the demoportal tries to access your local mysql server on port 3306 w
   * demoportal-portalnode-webapp
   * demoportal-genticsimagestore-webapp
 
-* Add the following argument to your Server VM Arguments:
+* Add the following argument to your Server VM arguments:
 
 ```
   -Dworkspace.dir=${workspace_loc}
@@ -58,4 +58,27 @@ By default the demoportal tries to access your local mysql server on port 3306 w
   -Dcatalina.config=file://${workspace_loc}/demoportal/demoportal-config/src/main/eclipse-conf/catalina.properties
 ```
 
+NOTE: Make sure you are not inserting any linebreaks in the VM arguments.
+
 * Make sure you invoked 'Publish' for your Server in order to update the used Server settings.
+
+## Accessing the Demo
+
+Once the demo server is up and running you can access the webapp via: <http://localhost:8080/Portal.Node/portal>
+
+## Profile Handling
+
+The configuration for prod, dev, test and local (IDE) environments often requires different settings. 
+The this project includes example profiles which can be used to build the project using custom settings. 
+Maven will use the _local_ profile if an Eclipse IDE environment was detected. Otherwise a profile must be specified to build this project.
+
+Please note that the properties within the _config.*.properties_ file are only be used to replace settings within the configuration files (e.g.: default.portal.xml). 
+The settings in those files are not used to configure maven.
+
+## Building 
+
+You may build the whole distribution package via maven:
+
+```
+mvn -Pprod,\!local clean package
+```

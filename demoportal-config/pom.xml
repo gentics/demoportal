@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.gentics</groupId>
 		<artifactId>demoportal</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.3.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>demoportal-config</artifactId>
@@ -38,7 +38,7 @@
 	<build>
 		<filters>
 			<filter>${filter.properties.file}</filter>
-		</filters>y
+		</filters>
 		<!-- The inherited portalnode-config profile will automatically be activated 
 			and take care for building the configuration files -->
 		<pluginManagement>
